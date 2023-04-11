@@ -84,7 +84,7 @@ Next we have the output that we get when we spawn the threads on a single core:
 <details>
   <summary> Output single core </summary>
 
-```json
+```yaml
 [sven@scalable aarch64_micro]$ OMP_NUM_THREADS=1 OMP_PLACES={0} ./build/micro_asimd 
 running ASIMD microbenchmarks
   threads: 1
