@@ -1,11 +1,13 @@
 # HPC_week_1
-Homework for the 1st week
+##Homework for the 1st week
 
 The Output of the executable for the micro benchmarks of the given assembly code is the following (1-4 threads on different cores):
 
 <details>
     <summary> Output </summary>
 <!-- empty line -->
+
+```yaml
 [sven@scalable aarch64_micro]$ OMP_NUM_THREADS=4 ./build/micro_asimd 
 
 running ASIMD microbenchmarks
@@ -73,11 +75,12 @@ peak_asimd_fmla_sp
 peak_asimd_fmla_dp
   duration: 23.3497 seconds
   GFLOPS: 77.0888
-
-
+```
 
 </details>
 <!-- empty line -->
+
+</br>
 
 Next we have the output that we get when we spawn the threads on a single core:
 
@@ -119,23 +122,6 @@ peak_asimd_fmla_dp
   GFLOPS: 31.5018
 finished ASIMD microbenchmarks
 
-[sven@scalable aarch64_micro]$ OMP_NUM_THREADS=2 OMP_PLACES={0} ./build/micro_asimd 
-running ASIMD microbenchmarks
-  threads: 2
-peak_asimd_fmadd_sp
-  duration: 28.8949 seconds
-  GFLOPS: 83.0597
-peak_asimd_fmadd_dp
-  duration: 28.8989 seconds
-  GFLOPS: 41.5241
-peak_asimd_fmla_sp
-  duration: 38.0936 seconds
-  GFLOPS: 63.0028
-peak_asimd_fmla_dp
-  duration: 38.0931 seconds
-  GFLOPS: 31.5018
-finished ASIMD microbenchmarks
-
 [sven@scalable aarch64_micro]$ OMP_NUM_THREADS=3 OMP_PLACES={0} ./build/micro_asimd 
 running ASIMD microbenchmarks
   threads: 3
@@ -152,8 +138,97 @@ peak_asimd_fmla_dp
   duration: 57.2216 seconds
   GFLOPS: 31.4567
 finished ASIMD microbenchmarks
-´´´
 
+[sven@scalable aarch64_micro]$ OMP_NUM_THREADS=4 OMP_PLACES={0} ./build/micro_asimd 
+running ASIMD microbenchmarks
+  threads: 4
+peak_asimd_fmadd_sp
+  duration: 58.1389 seconds
+  GFLOPS: 82.5609
+peak_asimd_fmadd_dp
+  duration: 58.2441 seconds
+  GFLOPS: 41.2059
+peak_asimd_fmla_sp
+  duration: 76.6216 seconds
+  GFLOPS: 62.6456
+peak_asimd_fmla_dp
+  duration: 76.3943 seconds
+  GFLOPS: 31.416
+finished ASIMD microbenchmarks
+```
+</details>
 
+Also we were supposed to write own kernels with the FMUL instruction with vectorial as well as scalar operation in double precision and single precision. In the following you can also expand the text based output
+
+<details>
+  <summary> FMUL output </summary>
+
+    ```YAML
+    [sven@scalable Vectors]$ OMP_NUM_THREADS=1 ./build/micro_asimd 
+    running ASIMD microbenchmarks
+      threads: 1
+    peak_asimd_vmul_sp
+      duration: 14.4404 seconds
+      GFLOPS: 41.5502
+    peak_asimd_vmul_dp
+      duration: 14.4401 seconds
+      GFLOPS: 20.7755
+    peak_asimd_fmul_sp
+      duration: 14.44 seconds
+      GFLOPS: 41.5513
+    peak_asimd_fmul_dp
+      duration: 14.4401 seconds
+      GFLOPS: 20.7754
+    finished ASIMD microbenchmarks
+    [sven@scalable Vectors]$ OMP_NUM_THREADS=2 ./build/micro_asimd 
+    running ASIMD microbenchmarks
+      threads: 2
+    peak_asimd_vmul_sp
+      duration: 20.0613 seconds
+      GFLOPS: 59.8167
+    peak_asimd_vmul_dp
+      duration: 18.0767 seconds
+      GFLOPS: 33.1919
+    peak_asimd_fmul_sp
+      duration: 14.4408 seconds
+      GFLOPS: 83.0977
+    peak_asimd_fmul_dp
+      duration: 14.4406 seconds
+      GFLOPS: 41.5494
+    finished ASIMD microbenchmarks
+    [sven@scalable Vectors]$ OMP_NUM_THREADS=3 ./build/micro_asimd 
+    running ASIMD microbenchmarks
+      threads: 3
+    peak_asimd_vmul_sp
+      duration: 21.2515 seconds
+      GFLOPS: 84.6998
+    peak_asimd_vmul_dp
+      duration: 20.7445 seconds
+      GFLOPS: 43.3851
+    peak_asimd_fmul_sp
+      duration: 15.6133 seconds
+      GFLOPS: 115.286
+    peak_asimd_fmul_dp
+      duration: 16.1814 seconds
+      GFLOPS: 55.6194
+    finished ASIMD microbenchmarks
+    [sven@scalable Vectors]$ OMP_NUM_THREADS=4 ./build/micro_asimd 
+    running ASIMD microbenchmarks
+      threads: 4
+    peak_asimd_vmul_sp
+
+      duration: 22.0588 seconds
+      GFLOPS: 108.8
+    peak_asimd_vmul_dp
+      duration: 21.5653 seconds
+      GFLOPS: 55.6448
+    peak_asimd_fmul_sp
+      duration: 16.9442 seconds
+      GFLOPS: 141.642
+    peak_asimd_fmul_dp
+      duration: 15.8647 seconds
+      GFLOPS: 75.6397
+    finished ASIMD microbenchmarks
+    ```
 
 </details>
