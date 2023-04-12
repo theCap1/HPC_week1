@@ -1,10 +1,10 @@
 # HPC_week_1
 ##Homework for the 1st week
 
-The Output of the executable for the micro benchmarks of the given assembly code is the following (1-4 threads on different cores):
+The textual output of the executable for the micro benchmarks of the given assembly code is the following collapsable section. Visually you can find it right beneath (1-4 threads on different cores):
 
 <details>
-    <summary> Output </summary>
+    <summary> Output FMA </summary>
 <!-- empty line -->
 
 ```yaml
@@ -85,9 +85,9 @@ peak_asimd_fmla_dp
 Next we have the output that we get when we spawn the threads on a single core:
 
 <details>
-  <summary> Output single core </summary>
+  <summary> Output FMA on single core </summary>
 
-```yaml
+```YAML
 [sven@scalable aarch64_micro]$ OMP_NUM_THREADS=1 OMP_PLACES={0} ./build/micro_asimd 
 running ASIMD microbenchmarks
   threads: 1
@@ -158,77 +158,80 @@ finished ASIMD microbenchmarks
 ```
 </details>
 
-Also we were supposed to write own kernels with the FMUL instruction with vectorial as well as scalar operation in double precision and single precision. In the following you can also expand the text based output
+</br>
+
+Also we were supposed to write own kernels with the FMUL instruction with vectorial as well as scalar operation in double precision and single precision. In the following you can also expand the text based output with the graphic right beneath:
 
 <details>
   <summary> FMUL output </summary>
 
-    ```YAML
-    [sven@scalable Vectors]$ OMP_NUM_THREADS=1 ./build/micro_asimd 
-    running ASIMD microbenchmarks
-      threads: 1
-    peak_asimd_vmul_sp
-      duration: 14.4404 seconds
-      GFLOPS: 41.5502
-    peak_asimd_vmul_dp
-      duration: 14.4401 seconds
-      GFLOPS: 20.7755
-    peak_asimd_fmul_sp
-      duration: 14.44 seconds
-      GFLOPS: 41.5513
-    peak_asimd_fmul_dp
-      duration: 14.4401 seconds
-      GFLOPS: 20.7754
-    finished ASIMD microbenchmarks
-    [sven@scalable Vectors]$ OMP_NUM_THREADS=2 ./build/micro_asimd 
-    running ASIMD microbenchmarks
-      threads: 2
-    peak_asimd_vmul_sp
-      duration: 20.0613 seconds
-      GFLOPS: 59.8167
-    peak_asimd_vmul_dp
-      duration: 18.0767 seconds
-      GFLOPS: 33.1919
-    peak_asimd_fmul_sp
-      duration: 14.4408 seconds
-      GFLOPS: 83.0977
-    peak_asimd_fmul_dp
-      duration: 14.4406 seconds
-      GFLOPS: 41.5494
-    finished ASIMD microbenchmarks
-    [sven@scalable Vectors]$ OMP_NUM_THREADS=3 ./build/micro_asimd 
-    running ASIMD microbenchmarks
-      threads: 3
-    peak_asimd_vmul_sp
-      duration: 21.2515 seconds
-      GFLOPS: 84.6998
-    peak_asimd_vmul_dp
-      duration: 20.7445 seconds
-      GFLOPS: 43.3851
-    peak_asimd_fmul_sp
-      duration: 15.6133 seconds
-      GFLOPS: 115.286
-    peak_asimd_fmul_dp
-      duration: 16.1814 seconds
-      GFLOPS: 55.6194
-    finished ASIMD microbenchmarks
-    [sven@scalable Vectors]$ OMP_NUM_THREADS=4 ./build/micro_asimd 
-    running ASIMD microbenchmarks
-      threads: 4
-    peak_asimd_vmul_sp
+  ```YAML
+  [sven@scalable Vectors]$ OMP_NUM_THREADS=1 ./build/micro_asimd 
+  running ASIMD microbenchmarks
+    threads: 1
+  peak_asimd_vmul_sp
+    duration: 14.4404 seconds
+    GFLOPS: 41.5502
+  peak_asimd_vmul_dp
+    duration: 14.4401 seconds
+    GFLOPS: 20.7755
+  peak_asimd_fmul_sp
+    duration: 14.44 seconds
+    GFLOPS: 41.5513
+  peak_asimd_fmul_dp
+    duration: 14.4401 seconds
+    GFLOPS: 20.7754
+  finished ASIMD microbenchmarks
+  [sven@scalable Vectors]$ OMP_NUM_THREADS=2 ./build/micro_asimd 
+  running ASIMD microbenchmarks
+    threads: 2
+  peak_asimd_vmul_sp
+    duration: 20.0613 seconds
+    GFLOPS: 59.8167
+  peak_asimd_vmul_dp
+    duration: 18.0767 seconds
+    GFLOPS: 33.1919
+  peak_asimd_fmul_sp
+    duration: 14.4408 seconds
+    GFLOPS: 83.0977
+  peak_asimd_fmul_dp
+    duration: 14.4406 seconds
+    GFLOPS: 41.5494
+  finished ASIMD microbenchmarks
+  [sven@scalable Vectors]$ OMP_NUM_THREADS=3 ./build/micro_asimd 
+  running ASIMD microbenchmarks
+    threads: 3
+  peak_asimd_vmul_sp
+    duration: 21.2515 seconds
+    GFLOPS: 84.6998
+  peak_asimd_vmul_dp
+    duration: 20.7445 seconds
+    GFLOPS: 43.3851
+  peak_asimd_fmul_sp
+    duration: 15.6133 seconds
+    GFLOPS: 115.286
+  peak_asimd_fmul_dp
+    duration: 16.1814 seconds
+    GFLOPS: 55.6194
+  finished ASIMD microbenchmarks
+  [sven@scalable Vectors]$ OMP_NUM_THREADS=4 ./build/micro_asimd 
+  running ASIMD microbenchmarks
+    threads: 4
+  peak_asimd_vmul_sp
 
-      duration: 22.0588 seconds
-      GFLOPS: 108.8
-    peak_asimd_vmul_dp
-      duration: 21.5653 seconds
-      GFLOPS: 55.6448
-    peak_asimd_fmul_sp
-      duration: 16.9442 seconds
-      GFLOPS: 141.642
-    peak_asimd_fmul_dp
-      duration: 15.8647 seconds
-      GFLOPS: 75.6397
-    finished ASIMD microbenchmarks
-    ```
+    duration: 22.0588 seconds
+    GFLOPS: 108.8
+  peak_asimd_vmul_dp
+    duration: 21.5653 seconds
+    GFLOPS: 55.6448
+  peak_asimd_fmul_sp
+    duration: 16.9442 seconds
+    GFLOPS: 141.642
+  peak_asimd_fmul_dp
+    duration: 15.8647 seconds
+    GFLOPS: 75.6397
+  finished ASIMD microbenchmarks
+  ```
 
 </details>
+
